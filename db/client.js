@@ -9,4 +9,4 @@ export const connectionsDataBase = async() => {
         console.log('Connection to database unsuccessful', error);
         process.exit(1);
     }
-}
+} 
