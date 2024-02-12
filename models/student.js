@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 
 
 // 3 string SchemaTypes: 'name', 'nested.firstName', 'nested.lastName'
-const catSchema = new mongoose.Schema({
-    catInfo: {
+const studentSchema = new mongoose.Schema({
+    studentInfo: {
         lastName: { required: true, type: String },
         firstName: { required: true, type: String },
         email: { required: true, type: String }
     }
   });
 
-const Cat = mongoose.model('Cat', catSchema);
+const Student = mongoose.model('Student', catSchema);
 
-export default Cat;
+export default Student;
