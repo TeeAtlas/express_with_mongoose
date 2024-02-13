@@ -28,19 +28,19 @@ export const getCats = async(req, res) => {
 export const postCat = async(req, res) => {
     const { last_name, first_name, email } = req.body;
     try {
-        const cat = await Cat.create({ last_name, first_name, email })
+        const data = await Cat.create({ last_name, first_name, email });
+        res.status(201).json(data);
     } catch (error) {
         console.log('Post was not successful', error);
         res.sendStatus(500);
     }
 }
 
-export const postCats = async(req, res) => {
-    try {
-        const cats = await Cat.insertMany(req.body)
-        res.status(201).json(cats);
-    } catch (error) {
-        console.log('Post was not successful', error);
-        res.sendStatus(500);
-    }
-}
+// export const postCats = async(req, res) => {
+//     try {
+//         const result = await Cat.insertMany({last_name: "Emmy"} {first_name: 'Miss.'}, {email: "emmy@cats.com"});
+//         res.json(result);
+//     } catch (error) {
+//         res.status(500).json({ message: err.message });
+//     }
+// }
