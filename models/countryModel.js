@@ -15,7 +15,7 @@ const countrySchema = new mongoose.Schema ({
             type: String,
             match: [/^[A-Z]{3}$/, 'Please fill out valid alpha3Code']
     },
-
+    visited: { type: Boolean, default: false }
 });
 
 const Country = mongoose.model('Country', countrySchema);
