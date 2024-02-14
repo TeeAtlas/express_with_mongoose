@@ -5,15 +5,17 @@ const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 const catSchema = new mongoose.Schema({
   last_name: { required: true, type: String },
   first_name: { required: true, type: String },
-  email: { required: true, 
+  email: { 
+            required: true, 
             type: String,
-              validate: {
-              validator: function(v) {
-                return emailRegex.test(v);
-              },
-              message: props => `${props.value} is not a valid email!`
-            }
-          }  
+            match: [emailRegex, 'please fill out a valid email address']
+          },
+  country: { 
+            type: mongoose.Schema.Types.ObjectId,
+            //matching the exact model name of your country schema
+            ref: 'Country',
+            required: true
+          }
   });
 
 const Cat = mongoose.model('Cat', catSchema);
